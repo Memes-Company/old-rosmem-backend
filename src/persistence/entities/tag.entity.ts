@@ -1,4 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  JoinTable,
+  ManyToMany,
+} from 'typeorm';
+import { Meme } from './meme.entity';
 
 @Entity()
 export class Tag {
@@ -7,4 +14,8 @@ export class Tag {
 
   @Column()
   title: string;
+
+  @ManyToMany(type => Meme)
+  @JoinTable()
+  memes: Meme[];
 }
