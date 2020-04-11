@@ -3,6 +3,7 @@ import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { AuthCredentialsDto } from '../dtos';
 import { User } from '../entities';
 import { AuthService } from '../services';
+import { ValidationPipe } from '@nestjs/common';
 
 @Resolver(of => User)
 export class UserResolver {
@@ -14,7 +15,9 @@ export class UserResolver {
   }
 
   @Mutation(returns => Boolean)
-  async signUp(@Args('data') dto: AuthCredentialsDto): Promise<boolean> {
+  async signUp(
+    @Args('data', ValidationPipe) dto: AuthCredentialsDto,
+  ): Promise<boolean> {
     await this.authService.signUp(dto);
     return true;
   }
