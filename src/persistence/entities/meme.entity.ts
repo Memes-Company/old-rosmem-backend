@@ -1,4 +1,10 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+  BaseEntity,
+} from 'typeorm';
 
 import { Tag } from './tag.entity';
 
@@ -7,7 +13,7 @@ export enum MemeSourceType {
 }
 
 @Entity()
-export class Meme {
+export class Meme extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

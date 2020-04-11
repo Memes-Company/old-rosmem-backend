@@ -1,14 +1,16 @@
 import {
-  Entity,
+  BaseEntity,
   Column,
-  PrimaryGeneratedColumn,
+  Entity,
   JoinTable,
   ManyToMany,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
+
 import { Meme } from './meme.entity';
 
 @Entity()
-export class Tag {
+export class Tag extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
