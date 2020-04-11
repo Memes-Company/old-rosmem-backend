@@ -21,6 +21,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "add-migration": "yarn build && yarn typeorm migration:run && yarn typeorm migration:generate -n",
     "run-migrations": "yarn build && yarn typeorm migration:run",
+    "adb": "yarn add-migration",
+    "rdb": "yarn run-migrations",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
