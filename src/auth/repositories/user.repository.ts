@@ -2,7 +2,6 @@ import * as ErrorCodes from '@drdgvhbh/postgres-error-codes';
 import {
   ConflictException,
   InternalServerErrorException,
-  UnauthorizedException,
 } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { EntityRepository, Repository } from 'typeorm';
@@ -30,14 +29,14 @@ export class UserRepository extends Repository<User> {
     }
   }
 
-  async validateUserPassword({
+  async isPasswordValid({
     login,
     password,
   }: AuthCredentialsDto): Promise<boolean> {
     const user = await this.findOne({ login });
 
     if (!user) {
-      throw new UnauthorizedException(`Invalid credentials`);
+      return false;
     }
 
     const hash = await this.hashPassword(password, user.salt);
