@@ -8,6 +8,7 @@ type Query {
 
 type Mutation {
   signUp(data: AuthCredentialsDto!): Boolean!
+  signIn(data: AuthCredentialsDto!): Boolean!
 }
 
 input AuthCredentialsDto {

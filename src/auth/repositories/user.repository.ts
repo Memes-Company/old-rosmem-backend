@@ -1,12 +1,15 @@
-import { EntityRepository, Repository } from 'typeorm';
-import * as bcrypt from 'bcrypt';
-import { AuthCredentialsDto } from '../dtos';
-import { User } from '../entities/user.entity';
 import * as ErrorCodes from '@drdgvhbh/postgres-error-codes';
 import {
   ConflictException,
   InternalServerErrorException,
+  UnauthorizedException,
 } from '@nestjs/common';
+import * as bcrypt from 'bcrypt';
+import { EntityRepository, Repository } from 'typeorm';
+
+import { AuthCredentialsDto } from '../dtos';
+import { User } from '../entities/user.entity';
+
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
   async signUp({ login, password }: AuthCredentialsDto): Promise<void> {
@@ -25,6 +28,20 @@ export class UserRepository extends Repository<User> {
         throw new InternalServerErrorException();
       }
     }
+  }
+
+  async validateUserPassword({
+    login,
+    password,
+  }: AuthCredentialsDto): Promise<boolean> {
+    const user = await this.findOne({ login });
+
+    if (!user) {
+      throw new UnauthorizedException(`Invalid credentials`);
+    }
+
+    const hash = await this.hashPassword(password, user.salt);
+    return user.password === hash;
   }
 
   private async hashPassword(password: string, salt: string): Promise<string> {

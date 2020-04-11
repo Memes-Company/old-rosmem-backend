@@ -21,4 +21,11 @@ export class UserResolver {
     await this.authService.signUp(dto);
     return true;
   }
+
+  @Mutation(returns => Boolean)
+  async signIn(
+    @Args('data', ValidationPipe) dto: AuthCredentialsDto,
+  ): Promise<boolean> {
+    return this.authService.signIn(dto);
+  }
 }
