@@ -7,6 +7,7 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { PersistenceModule } from './persistence/persistence.module';
 import { join } from 'path';
+import { PublicApiModule } from './public-api/public-api.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { join } from 'path';
     TypeOrmModule.forRoot(),
     PersistenceModule,
     AuthModule,
+    PublicApiModule,
   ],
   controllers: [AppController],
   providers: [AppService],
