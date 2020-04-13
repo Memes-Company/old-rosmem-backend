@@ -2,6 +2,10 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type User {
+  login: String!
+}
+
 type Query {
   query: String!
 }
@@ -9,6 +13,7 @@ type Query {
 type Mutation {
   signUp(data: AuthCredentialsDto!): Boolean!
   signIn(data: AuthCredentialsDto!): String!
+  getUser: User!
 }
 
 input AuthCredentialsDto {
