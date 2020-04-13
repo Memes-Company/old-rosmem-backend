@@ -6,8 +6,31 @@ type User {
   login: String!
 }
 
+type Tag {
+  id: String!
+  title: String!
+  memes: [Meme!]!
+}
+
+type Meme {
+  """Unique id of meme"""
+  id: String!
+  title: String!
+  description: String!
+  sourceType: MemeSourceType!
+  sourceValue: String!
+  tags: [Tag!]!
+}
+
+enum MemeSourceType {
+  link
+  image
+}
+
 type Query {
   query: String!
+  memes: [Meme!]!
+  meme(id: String!): Meme!
 }
 
 type Mutation {

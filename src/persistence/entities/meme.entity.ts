@@ -1,12 +1,21 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+  BaseEntity,
+} from 'typeorm';
 
 import { Tag } from './tag.entity';
-import { ObjectType, Field } from '@nestjs/graphql';
-
+import { ObjectType, Field, registerEnumType } from '@nestjs/graphql';
 export enum MemeSourceType {
   link = 'link',
   image = 'image',
 }
+
+registerEnumType(MemeSourceType, {
+  name: 'MemeSourceType',
+});
 
 @ObjectType()
 @Entity()
@@ -31,7 +40,11 @@ export class Meme extends BaseEntity {
   @Field()
   sourceValue: string;
 
-  @ManyToMany(type => Tag)
+  @ManyToMany(
+    type => Tag,
+    tag => tag.memes,
+    { eager: true },
+  )
   @Field(type => [Tag])
   tags: Tag[];
 }
