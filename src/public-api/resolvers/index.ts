@@ -1,1 +1,1 @@
-export * from './meme.resolver';
+export * from './memes.resolver';

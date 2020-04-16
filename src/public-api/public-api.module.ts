@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { MemeResolver } from './resolvers';
+import { MemesResolver } from './resolvers';
 import { PersistenceModule } from 'src/persistence/persistence.module';
 
 @Module({
-  providers: [MemeResolver],
+  providers: [MemesResolver],
   imports: [PersistenceModule],
 })
 export class PublicApiModule {}
