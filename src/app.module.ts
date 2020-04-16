@@ -5,9 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
-import { PersistenceModule } from './persistence/persistence.module';
 import { join } from 'path';
-import { PublicApiModule } from './public-api/public-api.module';
+import { MemesModule } from './memes/memes.module';
 
 @Module({
   imports: [
@@ -16,9 +15,8 @@ import { PublicApiModule } from './public-api/public-api.module';
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     TypeOrmModule.forRoot(),
-    PersistenceModule,
     AuthModule,
-    PublicApiModule,
+    MemesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

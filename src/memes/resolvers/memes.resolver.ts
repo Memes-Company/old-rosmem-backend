@@ -1,13 +1,10 @@
-import {
-  InternalServerErrorException,
-  NotImplementedException,
-} from '@nestjs/common';
+import { NotImplementedException } from '@nestjs/common';
 import { Args, Query, Resolver } from '@nestjs/graphql';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Meme } from 'src/persistence/entities/meme.entity';
-import { MemeRepository } from 'src/persistence/repositories';
 
-import { MemeQueryDto } from '../dtos/meme-query.dto';
+import { MemeQueryDto } from '../dtos';
+import { Meme } from '../entities';
+import { MemeRepository } from '../repositories';
 
 @Resolver(of => Meme)
 export class MemesResolver {

@@ -1,13 +1,14 @@
+import { Field, ObjectType, registerEnumType } from '@nestjs/graphql';
 import {
+  BaseEntity,
   Column,
   Entity,
   ManyToMany,
   PrimaryGeneratedColumn,
-  BaseEntity,
 } from 'typeorm';
 
 import { Tag } from './tag.entity';
-import { ObjectType, Field, registerEnumType } from '@nestjs/graphql';
+
 export enum MemeSourceType {
   link = 'link',
   image = 'image',
