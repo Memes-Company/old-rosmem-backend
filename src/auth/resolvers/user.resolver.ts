@@ -16,13 +16,17 @@ export class UserResolver {
   }
 
   @Mutation(returns => Boolean)
-  async signUp(@Args('data', ValidationPipe) dto: AuthCredentialsDto): Promise<boolean> {
+  async signUp(
+    @Args('data', ValidationPipe) dto: AuthCredentialsDto,
+  ): Promise<boolean> {
     await this.authService.signUp(dto);
     return true;
   }
 
   @Mutation(returns => String)
-  async signIn(@Args('data', ValidationPipe) dto: AuthCredentialsDto): Promise<string> {
+  async signIn(
+    @Args('data', ValidationPipe) dto: AuthCredentialsDto,
+  ): Promise<string> {
     return this.authService.signIn(dto);
   }
 

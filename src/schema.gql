@@ -29,13 +29,8 @@ enum MemeSourceType {
 
 type Query {
   query: String!
-  memes: [Meme!]!
-  meme(data: MemeQueryDto!): Meme!
-}
-
-input MemeQueryDto {
-  id: String
-  tags: [String!]
+  meme(id: String!): Meme!
+  memes_with_tags(tags: [String!]!): [Meme!]!
 }
 
 type Mutation {
