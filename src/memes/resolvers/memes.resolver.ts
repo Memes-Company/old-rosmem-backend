@@ -1,31 +1,22 @@
-import { NotImplementedException } from '@nestjs/common';
+import { Inject } from '@nestjs/common';
 import { Args, Query, Resolver } from '@nestjs/graphql';
-import { InjectRepository } from '@nestjs/typeorm';
 
-import { MemeQueryDto } from '../dtos';
 import { Meme } from '../entities';
-import { MemeRepository } from '../repositories';
+import { MemeService } from '../services/meme.service';
 
 @Resolver(of => Meme)
-export class MemesResolver {
-  constructor(
-    @InjectRepository(MemeRepository) private memesRepository: MemeRepository,
-  ) {}
-
-  @Query(of => [Meme])
-  async memes(): Promise<Meme[]> {
-    // move to MemeService inside Persistence module
-    return this.memesRepository.find();
-  }
+export class MemeResolver {
+  constructor(@Inject(MemeService) private memeService: MemeService) {}
 
   @Query(of => Meme)
-  async meme(@Args('data') { id, tags }: MemeQueryDto): Promise<Meme> {
-    // move to MemeService inside Persistence module
-    if (id) {
-      return this.memesRepository.findOne({ id });
-    }
-    if (tags) {
-      throw new NotImplementedException('Not implemented');
-    }
+  async meme(@Args('id') id: string): Promise<Meme> {
+    return this.memeService.getMemeById(id);
+  }
+
+  @Query(of => [Meme], { name: 'memes_with_tags' })
+  async memesWithTags(
+    @Args('tags', { type: () => [String] }) tags: string[],
+  ): Promise<Meme[]> {
+    return this.memeService.getMemesWithTags(tags);
   }
 }
