@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { MemeRepository } from './repositories';
-import { MemeResolver } from './resolvers';
-import { MemeService } from './services';
+import { Meme, Tag } from './entities';
+import { MemeResolver, TagsResolver } from './resolvers';
+import { MemeService, TagService } from './services';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([MemeRepository])],
-  providers: [MemeResolver, MemeService],
+  imports: [TypeOrmModule.forFeature([Meme, Tag])],
+  providers: [MemeResolver, MemeService, TagsResolver, TagService],
 })
 export class MemesModule {}

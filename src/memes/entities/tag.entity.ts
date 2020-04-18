@@ -1,3 +1,4 @@
+import { Field, ObjectType } from '@nestjs/graphql';
 import {
   BaseEntity,
   Column,
@@ -8,7 +9,6 @@ import {
 } from 'typeorm';
 
 import { Meme } from './meme.entity';
-import { ObjectType, Field } from '@nestjs/graphql';
 
 @Entity()
 @ObjectType()

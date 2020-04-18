@@ -31,6 +31,8 @@ type Query {
   query: String!
   meme(id: String!): Meme!
   memes_with_tags(tags: [String!]!): [Meme!]!
+  tag(id: String!): Tag!
+  search_tags(query: String!): [Tag!]!
 }
 
 type Mutation {
