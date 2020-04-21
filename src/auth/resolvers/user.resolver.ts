@@ -10,11 +10,6 @@ import { AuthService } from '../services';
 export class UserResolver {
   constructor(private authService: AuthService) {}
 
-  @Query(of => String)
-  query() {
-    return 'Forbidden';
-  }
-
   @Mutation(returns => Boolean)
   async signUp(
     @Args('data', ValidationPipe) dto: AuthCredentialsDto,
