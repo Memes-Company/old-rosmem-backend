@@ -1,21 +1,21 @@
 import { Inject } from '@nestjs/common';
 import { Args, Query, Resolver } from '@nestjs/graphql';
 
-import { Tag } from '../entities';
 import { TagService } from '../services';
+import { TagType } from '../types';
 
-@Resolver(of => Tag)
+@Resolver(of => TagType)
 export class TagsResolver {
   constructor(@Inject(TagService) private tagService: TagService) {}
 
-  @Query(of => Tag)
-  async tag(@Args('id') id: string): Promise<Tag> {
+  @Query(of => TagType)
+  async tag(@Args('id') id: string): Promise<TagType> {
     return this.tagService.getTagById(id);
   }
 
-  @Query(of => [Tag])
+  @Query(of => [TagType])
   //todo: add min length
-  async search_tags(@Args('query') query: string): Promise<Tag[]> {
+  async search_tags(@Args('query') query: string): Promise<TagType[]> {
     return this.tagService.searchTag(query);
   }
 }

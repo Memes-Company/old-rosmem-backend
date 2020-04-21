@@ -1,22 +1,22 @@
 import { Inject } from '@nestjs/common';
 import { Args, Query, Resolver } from '@nestjs/graphql';
 
-import { Meme } from '../entities';
 import { MemeService } from '../services/meme.service';
+import { MemeType } from '../types';
 
-@Resolver(of => Meme)
+@Resolver(of => MemeType)
 export class MemeResolver {
   constructor(@Inject(MemeService) private memeService: MemeService) {}
 
-  @Query(of => Meme)
-  async meme(@Args('id') id: string): Promise<Meme> {
+  @Query(of => MemeType)
+  async meme(@Args('id') id: string): Promise<MemeType> {
     return this.memeService.getMemeById(id);
   }
 
-  @Query(of => [Meme], { name: 'memes_with_tags' })
+  @Query(of => [MemeType], { name: 'memes_with_tags' })
   async memesWithTags(
     @Args('tags', { type: () => [String] }) tags: string[],
-  ): Promise<Meme[]> {
+  ): Promise<MemeType[]> {
     return this.memeService.getMemesWithTags(tags);
   }
 }

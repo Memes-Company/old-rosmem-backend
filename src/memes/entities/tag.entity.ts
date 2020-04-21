@@ -1,4 +1,3 @@
-import { Field, ObjectType } from '@nestjs/graphql';
 import {
   BaseEntity,
   Column,
@@ -11,14 +10,11 @@ import {
 import { Meme } from './meme.entity';
 
 @Entity()
-@ObjectType()
 export class Tag extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
-  @Field()
   id: string;
 
   @Column()
-  @Field()
   title: string;
 
   @ManyToMany(
@@ -26,6 +22,5 @@ export class Tag extends BaseEntity {
     meme => meme.tags,
   )
   @JoinTable()
-  @Field(type => [Meme])
   memes: Meme[];
 }

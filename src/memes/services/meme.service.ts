@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 
 import { Meme } from '../entities';
 import { MemeQueryDto } from '../dtos';
+import { MemeType } from '../types';
 
 @Injectable()
 export class MemeService {
@@ -11,14 +12,14 @@ export class MemeService {
     @InjectRepository(Meme) private memeRepository: Repository<Meme>,
   ) {}
 
-  async getMemeById(id: string): Promise<Meme> {
+  async getMemeById(id: string): Promise<MemeType> {
     const meme = await this.memeRepository.findOne({ id });
     if (!meme) {
       throw new NotFoundException(`Meme with specified id is not found`);
     }
     return meme;
   }
-  async getMemesWithTags(tags: string[]): Promise<Meme[]> {
+  async getMemesWithTags(tags: string[]): Promise<MemeType[]> {
     return this.memeRepository
       .createQueryBuilder('meme')
       .addSelect('count("tagId")')
