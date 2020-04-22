@@ -11,8 +11,12 @@ export class TagService {
 
   async searchTag(query: string): Promise<TagType[]> {
     return this.tagRepository
-      .createQueryBuilder()
-      .where(`lower(title) like :query`, { query: `%${query.toLowerCase()}%` })
+      .createQueryBuilder('tag')
+      .where(`lower(tag.title) like :query`, {
+        query: `%${query.toLowerCase()}%`,
+      })
+      .groupBy('tag.id, meme.id')
+      .leftJoinAndSelect('tag.memes', 'meme')
       .getMany();
   }
 
