@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, In } from 'typeorm';
 
 import { Meme } from '../entities';
 import { MemeQueryDto } from '../dtos';
@@ -23,9 +23,11 @@ export class MemeService {
     return this.memeRepository
       .createQueryBuilder('meme')
       .addSelect('count("tagId")')
-      .innerJoin('meme.tags', 'tag', 'tag.id in (:...tags)', { tags })
-      .groupBy('meme.id')
-      .having('count("tagId") >= :tagsCount', { tagsCount: tags.length })
+      .addSelect('json_agg("tagId")', 'tags')
+      .innerJoinAndSelect('meme.tags', 'tag', 'tag.id in (:...tags)', { tags })
+      .groupBy('meme.id, tag.id')
+      .having('count("tagId") > 0')
+      .orderBy('count("tagId")', 'DESC')
       .getMany();
   }
 }
