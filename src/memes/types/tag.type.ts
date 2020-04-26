@@ -2,14 +2,16 @@ import { Field, ObjectType } from '@nestjs/graphql';
 
 import { MemeType } from './meme.type';
 
-@ObjectType('Tag')
+@ObjectType('Tag', { description: 'Represents tag for meme' })
 export class TagType {
-  @Field()
+  @Field({ description: 'The unique id of tag' })
   id: string;
 
-  @Field()
+  @Field({ description: 'This is the literally tag' })
   title: string;
 
-  @Field(type => [MemeType])
+  @Field(type => [MemeType], {
+    description: 'List of Memes which are contain this tag',
+  })
   memes: MemeType[];
 }

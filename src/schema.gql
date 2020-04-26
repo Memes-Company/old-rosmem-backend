@@ -6,19 +6,38 @@ type User {
   login: String!
 }
 
+"""Represents tag for meme"""
 type Tag {
+  """The unique id of tag"""
   id: String!
+
+  """This is the literally tag"""
   title: String!
+
+  """List of Memes which are contain this tag"""
   memes: [Meme!]!
 }
 
+"""The meme."""
 type Meme {
-  """Unique id of meme"""
+  """The unique id of meme"""
   id: String!
+
+  """Short name"""
   title: String!
+
+  """Brief info about meme"""
   description: String!
+
+  """
+  The type of meme's media source. Can be used to determine how to show media (e.g. like link, photo or video)
+  """
   sourceType: MemeSourceType!
+
+  """The link to media: photo, video, wiki etc."""
   sourceValue: String!
+
+  """List of Tags which are related to the Meme"""
   tags: [Tag!]!
 }
 
@@ -28,19 +47,36 @@ enum MemeSourceType {
 }
 
 type Query {
+  """Returns Meme with given ID. Otherwise returns 404"""
   meme(id: String!): Meme!
+
+  """
+  Receives the list of valid Tag IDs and returns memes which have relation with some of that Tags
+  """
   memes_with_tags(tags: [String!]!): [Meme!]!
+
+  """Returns Tag with given ID. Otherwise returns 404"""
   tag(id: String!): Tag!
+
+  """Returns all tags which titles case-insensitive contain given substring"""
   search_tags(query: String!): [Tag!]!
 }
 
 type Mutation {
+  """Creates new user with given credentials"""
   signUp(data: AuthCredentialsDto!): Boolean!
+
+  """Authorizes existing user and returns token for futher API requests"""
   signIn(data: AuthCredentialsDto!): String!
+
+  """Test method to validate authorization"""
   getUser: User!
 }
 
 input AuthCredentialsDto {
+  """User login"""
   login: String!
+
+  """User password"""
   password: String!
 }

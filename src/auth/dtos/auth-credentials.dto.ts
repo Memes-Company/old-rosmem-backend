@@ -2,14 +2,13 @@ import { Field, InputType } from '@nestjs/graphql';
 import { IsString, MinLength, MaxLength, Matches } from 'class-validator';
 @InputType()
 export class AuthCredentialsDto {
-  @Field()
+  @Field({ description: 'User login' })
   @IsString()
   @MinLength(3)
   @MaxLength(20)
   login: string;
 
-  @Field()
-  @Field()
+  @Field({ description: 'User password' })
   @IsString()
   @MinLength(6)
   @MaxLength(20)
