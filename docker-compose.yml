@@ -6,20 +6,24 @@ services:
     restart: always
     environment:
       # POSTGRES_PASSWORD: example
-      POSTGRES_HOST_AUTH_METHOD: "trust"
+      POSTGRES_HOST_AUTH_METHOD: 'trust'
     ports:
       - '5432:5432'
   pgadmin:
     image: dpage/pgadmin4
+    depends_on:
+      - db
     volumes:
-      - "./servers.json:/pgadmin4/servers.json"
+      - './servers.json:/pgadmin4/servers.json'
     environment:
-        PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
-        PGADMIN_DEFAULT_PASSWORD: pgadmin4@pgadmin.org
-        # PGADMIN_ENABLE_TLS: "true"
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: pgadmin4@pgadmin.org
+      # PGADMIN_ENABLE_TLS: "true"
     ports:
       - '8080:80'
   api:
     image: rosmem-backend
+    depends_on:
+      - db
     ports:
-      - '5000:80'
+      - '5000:3000'
