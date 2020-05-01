@@ -14,7 +14,7 @@ services:
     depends_on:
       - db
     volumes:
-      - './servers.json:/pgadmin4/servers.json'
+      - './deployment/pgadmin4/servers.json:/pgadmin4/servers.json'
     environment:
       PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
       PGADMIN_DEFAULT_PASSWORD: pgadmin4@pgadmin.org
