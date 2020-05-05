@@ -12,5 +12,4 @@ RUN yarn
 COPY . /home/node/app
 
 RUN yarn build
-
-CMD [ "node", "dist/main" ]
+CMD [ "yarn", "start:prod" ]
