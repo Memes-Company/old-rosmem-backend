@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "build:docker": "docker build . -t rosmem-backend",
-    "compose": "docker-compose up",
+    "start:docker": "docker-compose up api",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
