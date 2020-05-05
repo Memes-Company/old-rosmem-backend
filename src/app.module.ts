@@ -11,6 +11,8 @@ import { MemesModule } from './memes/memes.module';
 @Module({
   imports: [
     GraphQLModule.forRoot({
+      introspection: true,
+      playground: true,
       context: ({ req }) => ({ req }),
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
