@@ -28,4 +28,4 @@ services:
     depends_on:
       - db
     ports:
-      - '5000:3000'
+      - '5000:5000'
