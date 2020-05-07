@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
@@ -10,6 +11,9 @@ import { MemesModule } from './memes/memes.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     GraphQLModule.forRoot({
       introspection: process.env.ENABLE_GRAPHQL_PLAYGROUND === 'true',
       playground: process.env.ENABLE_GRAPHQL_PLAYGROUND === 'true',
