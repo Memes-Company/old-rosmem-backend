@@ -2,11 +2,9 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
-
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { AuthModule } from './auth/auth.module';
 import { join } from 'path';
+
+import { AuthModule } from './auth/auth.module';
 import { MemesModule } from './memes/memes.module';
 
 @Module({
@@ -24,7 +22,5 @@ import { MemesModule } from './memes/memes.module';
     AuthModule,
     MemesModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
