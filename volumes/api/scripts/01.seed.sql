@@ -1,0 +1,32 @@
+INSERT INTO public.meme VALUES ('e71f5471-3576-4970-bbca-2e0d0dd4e34e', 'Рикролл', 'Интернет-розыгрыш, во время которого происходит намеренная подмена ссылки или видеоролика клипом Рика Эстли Never Gonna Give You Up', 'link', 'https://youtu.be/oHg5SJYRHA0');
+INSERT INTO public.meme VALUES ('6ca2a064-9997-410c-88bc-558bfe484fee', 'Trollface', 'Мем-фейс, на котором изображено лицо, расплывшееся в хитрой улыбке. Это лицо тролля, то есть человека, который провоцирует срач в интернете', 'image', 'https://memepedia.ru/wp-content/uploads/2017/03/657px-Trollface_HD.png');
+INSERT INTO public.meme VALUES ('57297456-0f76-4680-a2f5-d091ce439cd8', 'Квадрат из смайлов с руками', 'Квадрат из смайлов с руками (Cascading Pointing Hand Emoji) — мем с квадратом, составленным из эмоджи в виде указательного пальца. В центре квадрата пишут слово, на котором нужно акцентировать внимание', 'image', 'https://memepedia.ru/wp-content/uploads/2019/11/kvadrat-iz-smajlov.png');
+INSERT INTO public.meme VALUES ('d5be567d-2139-4137-a38d-4ed78edd8962', 'Картошка с человеческим лицом', 'Мем с фотографией картофелины со складками на кожуре. Складки напоминают изможденное лицо старика', 'image', 'https://memepedia.ru/wp-content/uploads/2019/10/u9adsakhslr31-%E2%80%94-kopija.jpg');
+
+INSERT INTO public.tag VALUES ('8e850a0d-1f0e-4cfa-b4b3-bcf9cbfde725', 'Рик ролл');
+INSERT INTO public.tag VALUES ('83f8eb2b-29e3-47b4-979a-b88d5b1d9ab1', 'Emoji');
+INSERT INTO public.tag VALUES ('4bc8aca2-8ae3-4f0e-8719-ef890cb4e7dc', 'Эмодзи');
+INSERT INTO public.tag VALUES ('4128448a-274f-445b-95c6-c11075821518', 'Эмоджи');
+INSERT INTO public.tag VALUES ('e3a97586-05f7-4b65-9384-bf5f9aea5721', 'Руки');
+INSERT INTO public.tag VALUES ('ba65ce27-bb44-4b14-bfee-88606586086d', 'Смайлы');
+INSERT INTO public.tag VALUES ('47b9a6bb-bfed-49a6-8a1e-80c07869af01', 'Квадрат');
+INSERT INTO public.tag VALUES ('db086f15-ded0-4a7f-a269-030f6129b481', 'Trollface');
+INSERT INTO public.tag VALUES ('872ca39d-86fa-4a02-b88d-b04c44ddd270', 'Рикролл');
+INSERT INTO public.tag VALUES ('9f030e6f-c501-4974-a099-49b666df2932', 'Картошка');
+INSERT INTO public.tag VALUES ('3013ea15-6211-4c57-aa22-7a9906509f61', 'Рик Эстли');
+
+INSERT INTO public.tag_memes_meme VALUES ('3013ea15-6211-4c57-aa22-7a9906509f61', 'e71f5471-3576-4970-bbca-2e0d0dd4e34e');
+INSERT INTO public.tag_memes_meme VALUES ('872ca39d-86fa-4a02-b88d-b04c44ddd270', 'e71f5471-3576-4970-bbca-2e0d0dd4e34e');
+INSERT INTO public.tag_memes_meme VALUES ('8e850a0d-1f0e-4cfa-b4b3-bcf9cbfde725', 'e71f5471-3576-4970-bbca-2e0d0dd4e34e');
+INSERT INTO public.tag_memes_meme VALUES ('83f8eb2b-29e3-47b4-979a-b88d5b1d9ab1', '57297456-0f76-4680-a2f5-d091ce439cd8');
+INSERT INTO public.tag_memes_meme VALUES ('4bc8aca2-8ae3-4f0e-8719-ef890cb4e7dc', '57297456-0f76-4680-a2f5-d091ce439cd8');
+INSERT INTO public.tag_memes_meme VALUES ('4128448a-274f-445b-95c6-c11075821518', '57297456-0f76-4680-a2f5-d091ce439cd8');
+INSERT INTO public.tag_memes_meme VALUES ('e3a97586-05f7-4b65-9384-bf5f9aea5721', '57297456-0f76-4680-a2f5-d091ce439cd8');
+INSERT INTO public.tag_memes_meme VALUES ('ba65ce27-bb44-4b14-bfee-88606586086d', '57297456-0f76-4680-a2f5-d091ce439cd8');
+INSERT INTO public.tag_memes_meme VALUES ('47b9a6bb-bfed-49a6-8a1e-80c07869af01', '57297456-0f76-4680-a2f5-d091ce439cd8');
+INSERT INTO public.tag_memes_meme VALUES ('db086f15-ded0-4a7f-a269-030f6129b481', '6ca2a064-9997-410c-88bc-558bfe484fee');
+INSERT INTO public.tag_memes_meme VALUES ('9f030e6f-c501-4974-a099-49b666df2932', 'd5be567d-2139-4137-a38d-4ed78edd8962');
+INSERT INTO public.tag_memes_meme VALUES ('83f8eb2b-29e3-47b4-979a-b88d5b1d9ab1', '6ca2a064-9997-410c-88bc-558bfe484fee');
+INSERT INTO public.tag_memes_meme VALUES ('4bc8aca2-8ae3-4f0e-8719-ef890cb4e7dc', '6ca2a064-9997-410c-88bc-558bfe484fee');
+INSERT INTO public.tag_memes_meme VALUES ('4128448a-274f-445b-95c6-c11075821518', '6ca2a064-9997-410c-88bc-558bfe484fee');
+INSERT INTO public.tag_memes_meme VALUES ('ba65ce27-bb44-4b14-bfee-88606586086d', '6ca2a064-9997-410c-88bc-558bfe484fee');
