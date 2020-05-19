@@ -9,7 +9,7 @@
     "build:docker": "docker build . -t rosmem-backend_api",
     "start:docker": "docker-compose up api",
     "prebuild": "rimraf dist",
-    "build": "nest build",
+    "build": "nest build && cp -r config/ dist/config/",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "yarn start-db && NODE_ENV=development nest start",
     "start:dev": "yarn start-db && NODE_ENV=development nest start --watch",
