@@ -20,7 +20,12 @@ import { MemesModule } from './memes/memes.module';
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     TypeOrmModule.forRoot(),
-    AuthModule,
+    AuthModule.forRoot({
+      secret: process.env.JWT_SECRET,
+      signOptions: {
+        expiresIn: process.env.JWT_EXPIRES_IN,
+      },
+    }),
     MemesModule,
   ],
 })
