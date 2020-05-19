@@ -5,7 +5,7 @@ COPY package.json .
 COPY yarn.lock .
 
 
-RUN yarn install --production
+RUN yarn install
 
 COPY . .
 
