@@ -24,7 +24,7 @@ services:
     ports:
       - '8080:80'
   api:
-    image: rosmem-backend
+    build: .
     depends_on:
       - db
     environment:
