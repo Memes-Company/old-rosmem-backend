@@ -5,7 +5,8 @@ COPY yarn.lock /home/node/app/
 
 WORKDIR /home/node/app
 
-RUN yarn
+
+RUN yarn install --production
 
 COPY . /home/node/app
 
