@@ -11,6 +11,8 @@
     "prebuild": "rimraf dist",
     "build": "nest build && cp -r config/ dist/config/",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "logs:stage": "heroku logs --tail -a rosmem-stage",
+    "logs:prod": "heroku logs --tail -a rosmem-prod",
     "start": "yarn start-db && NODE_ENV=development nest start",
     "start:dev": "yarn start-db && NODE_ENV=development nest start --watch",
     "start:debug": "yarn start-db && NODE_ENV=development nest start --debug --watch",
